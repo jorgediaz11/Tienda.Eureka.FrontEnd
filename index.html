@@ -1,0 +1,646 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catalogo educativo estatico de Eureka.">
+  <title>Eureka - Catalogo Educativo</title>
+  <link rel="stylesheet" href="./src/assets/styles/main.css">
+  <link rel="stylesheet" href="./src/assets/styles/components.css">
+</head>
+<body>
+    <div id="container">
+      <div class="">
+        <header class="sticky top-0 z-50 w-full px-6 py-4" style="background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); box-shadow: var(--shadow-base);">
+          <div class="max-w-7xl mx-auto flex items-center justify-between gap-8">
+            <div class="flex-shrink-0">
+              <p class="brand-logo text-2xl font-bold">EUREKA</p>
+            </div>
+            <div class="flex-1 max-w-2xl">
+              <div class="relative w-full" style="border-radius: 30px; background-color: var(--background-contrast); overflow: hidden;">
+                <input type="text" placeholder="Buscar libros, materiales, plataformas..." class="w-full px-6 py-3 pr-12 bg-transparent border-none outline-none" style="font-size: 15px; font-weight: var(--font-weight-normal);">
+                <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 muted-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search">
+                    <circle cx="11" cy="11" r="8">
+                    </circle>
+                    <path d="m21 21-4.3-4.3">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="flex items-center gap-6">
+              <a href="./mi-cuenta.html" class="flex items-center gap-2 hover:opacity-70 transition-opacity text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2">
+                  </path>
+                  <circle cx="12" cy="7" r="4">
+                  </circle>
+                </svg>
+                <span class="hidden md:inline text-15">
+                  Mi Cuenta
+                </span>
+              </a>
+              <a href="./ver-carrito.html" class="relative flex items-center gap-2 hover:opacity-70 transition-opacity text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart">
+                  <circle cx="8" cy="21" r="1">
+                  </circle>
+                  <circle cx="19" cy="21" r="1">
+                  </circle>
+                  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12">
+                  </path>
+                </svg>
+                <span class="hidden md:inline text-15">
+                  Carrito
+                </span>
+                <span id="cart-count" class="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-white text-xs font-bold cart-count-badge">
+                  0
+                </span>
+              </a>
+            </div>
+          </div>
+        </header>
+        <main>
+        <div class="w-full py-3 px-6 context-bar">
+          <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+            <nav class="flex flex-wrap items-center gap-2 md:gap-3">
+              <a href="./index.html" class="transition-opacity hover:opacity-70 nav-button">
+                Inicio
+              </a>
+              <a href="./como-comprar.html" class="transition-opacity hover:opacity-70 nav-button">
+                ¿Cómo comprar?
+              </a>
+              <a href="./contactanos.html" class="transition-opacity hover:opacity-70 nav-button">
+                Contáctanos
+              </a>
+              <a href="./servicio-al-cliente.html" class="transition-opacity hover:opacity-70 nav-button">
+                Servicio al Cliente
+              </a>
+            </nav>
+            <div class="flex flex-wrap items-center gap-3">
+              <div class="relative school-selector">
+                <label for="school-search" class="block mb-2" style="font-size: 12px; font-weight: var(--font-weight-bold); letter-spacing: 0.06em; color: #000;">
+                  SELECTOR DE COLEGIO
+                </label>
+                <div class="bg-white rounded-xl px-4 py-3" style="box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);">
+                  <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--muted-foreground); flex-shrink: 0;">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <path d="m21 21-4.3-4.3"></path>
+                    </svg>
+                    <input id="school-search" name="school-search" list="school-options" type="text" placeholder="Busca tu colegio o escribe su nombre" autocomplete="off" class="w-full bg-transparent border-none outline-none" style="font-size: 14px; font-weight: var(--font-weight-medium); color: var(--text-primary);">
+                  </div>
+                  <datalist id="school-options">
+                    <option value="Colegio San Ignacio de Recalde"></option>
+                    <option value="Colegio María Alvarado"></option>
+                    <option value="Colegio Saco Oliveros"></option>
+                    <option value="Colegio Trilce Los Olivos"></option>
+                    <option value="Colegio Innova Schools Surco"></option>
+                    <option value="Colegio Pamer Salamanca"></option>
+                    <option value="Colegio Peruano Británico"></option>
+                    <option value="Colegio Santa Úrsula"></option>
+                    <option value="Colegio La Unión"></option>
+                    <option value="Colegio San Agustín"></option>
+                  </datalist>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="relative w-full overflow-hidden" style="background: linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%); border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;">
+                <div class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+                  <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-white space-y-6">
+                      <h1 class="leading-tight" style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: var(--font-weight-bold); color: rgb(255, 255, 255);">
+                        Todo lo que necesitas
+                        <br>
+                        para el año escolar
+                      </h1>
+                      <p class="opacity-90" style="font-size: 1.125rem; font-weight: var(--font-weight-normal); line-height: 1.6;">
+                        Libros, plataformas digitales y materiales educativos con entrega directa a tu colegio
+                      </p>
+                      <a href="./catalogo.html" class="px-8 py-4 rounded-xl flex items-center gap-2 hover:opacity-90 transition-all transform hover:scale-105 hero-cta">
+                        Explorar Catálogo
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down">
+                          <path d="m6 9 6 6 6-6">
+                          </path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="relative">
+                      <div class="relative z-10 hero-media">
+                        <img loading="eager" decoding="async" width="1200" height="900" src="./src/assets/images/libro-0014.jpg" alt="Estudiante feliz con materiales de estudio" class="w-full h-auto object-contain hero-media-image">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="w-full py-12 section-contrast">
+                <div class="max-w-7xl mx-auto px-6">
+                  <h2 class="mb-8 section-title">
+                    Plan Lector - Colecciones Destacadas
+                  </h2>
+                  <div class="relative px-2 md:px-8">
+                    <button type="button" data-carousel-target="plan-lector-track" data-carousel-action="prev" class="absolute left-2 md:left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity carousel-arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left">
+                        <path d="m15 18-6-6 6-6"></path>
+                      </svg>
+                    </button>
+                    <div id="plan-lector-track" class="flex gap-4 overflow-x-auto scroll-smooth pb-2 plan-track">
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card">
+                        <img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0011.jpg" alt="Cien Años de Soledad" class="w-full object-contain mb-4 product-image-fixed">
+                        <h3 class="product-title">Cien Años de Soledad</h3>
+                        <div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 24.990</span></div>
+                        <div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div>
+                      </article>
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card"><img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0006.jpg" alt="El Principito" class="w-full object-contain mb-4 product-image-fixed"><h3 class="product-title">El Principito</h3><div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 18.990</span></div><div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div></article>
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card"><img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0010.jpg" alt="Don Quijote" class="w-full object-contain mb-4 product-image-fixed"><h3 class="product-title">Don Quijote de la Mancha</h3><div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 32.990</span></div><div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div></article>
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card"><img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0001.jpg" alt="Crónica de una Muerte Anunciada" class="w-full object-contain mb-4 product-image-fixed"><h3 class="product-title">Crónica de una Muerte Anunciada</h3><div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 21.990</span></div><div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div></article>
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card"><img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0013.jpg" alt="Romeo y Julieta" class="w-full object-contain mb-4 product-image-fixed"><h3 class="product-title">Romeo y Julieta</h3><div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 19.990</span></div><div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div></article>
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card"><img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0007.jpg" alt="La Odisea" class="w-full object-contain mb-4 product-image-fixed"><h3 class="product-title">La Odisea</h3><div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 23.990</span></div><div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div></article>
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card"><img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0005.jpg" alt="La Metamorfosis" class="w-full object-contain mb-4 product-image-fixed"><h3 class="product-title">La Metamorfosis</h3><div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 17.990</span></div><div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div></article>
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card"><img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0008.jpg" alt="Fuenteovejuna" class="w-full object-contain mb-4 product-image-fixed"><h3 class="product-title">Fuenteovejuna</h3><div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 20.990</span></div><div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div></article>
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card"><img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0004.jpg" alt="La Casa de Bernarda Alba" class="w-full object-contain mb-4 product-image-fixed"><h3 class="product-title">La Casa de Bernarda Alba</h3><div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 22.990</span></div><div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div></article>
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card"><img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0002.jpg" alt="El Lazarillo de Tormes" class="w-full object-contain mb-4 product-image-fixed"><h3 class="product-title">El Lazarillo de Tormes</h3><div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 16.990</span></div><div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div></article>
+                      <article class="flex-none bg-white p-5 transition-all hover:scale-105 plan-card"><img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0014.jpg" alt="Mitos y Leyendas" class="w-full object-contain mb-4 product-image-fixed"><h3 class="product-title">Mitos y Leyendas del Perú</h3><div class="flex items-baseline justify-end price-row"><span class="price-value">S/ 26.990</span></div><div class="flex items-center gap-2 mt-3"><div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control"><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"></path></svg></button><span class="qty-value">1</span><button type="button" class="hover:opacity-70 transition-opacity qty-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button></div><button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">Agregar</button></div></article>
+                    </div>
+                    <button type="button" data-carousel-target="plan-lector-track" data-carousel-action="next" class="absolute right-2 md:right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity carousel-arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
+                        <path d="m9 18 6-6-6-6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </section>
+              <section class="w-full py-12 section-contrast">
+                <div class="max-w-7xl mx-auto px-6">
+                  <h2 class="mb-8 section-title">
+                    Plataformas Digitales Eureka
+                  </h2>
+                  <div class="relative px-8">
+                    <div class="slick-slider slick-initialized">
+                      <div class="slick-list">
+                        <div class="slick-track slick-track-static">
+                          <div data-index="0" class="slick-slide slick-active slick-current slide-cell" tabindex="-1" aria-hidden="false">
+                            <div>
+                              <div class="px-3 slide-inner" tabindex="-1">
+                                <div class="bg-white p-5 transition-all hover:scale-105 platform-card">
+                                  <div class="relative mb-4">
+                                    <div class="absolute top-2 right-2 z-10 px-3 py-1 rounded-full flex items-center gap-1 text-white text-xs instant-badge">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap">
+                                        <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z">
+                                        </path>
+                                      </svg>
+                                      Activación Inmediata
+                                    </div>
+                                    <div class="relative w-full aspect-[3/4] flex items-center justify-center media-holder">
+                                      <div class="w-full h-full rounded-lg overflow-hidden platform-frame">
+                                        <img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0005.jpg" alt="ALEKS - Matemáticas Adaptativas (Licencia Anual)" class="w-full h-full object-cover">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="space-y-3">
+                                    <h3 class="line-clamp-2 product-title">
+                                      ALEKS - Matemáticas Adaptativas (Licencia Anual)
+                                    </h3>
+                                    <div class="flex items-baseline justify-end gap-2 price-row">
+                                      <span class="price-value">
+                                        S/ 89.990
+                                      </span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                      <div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control">
+                                        <button type="button" class="hover:opacity-70 transition-opacity qty-btn">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus">
+                                            <path d="M5 12h14">
+                                            </path>
+                                          </svg>
+                                        </button>
+                                        <span class="qty-value">
+                                          1
+                                        </span>
+                                        <button type="button" class="hover:opacity-70 transition-opacity qty-btn">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
+                                            <path d="M5 12h14">
+                                            </path>
+                                            <path d="M12 5v14">
+                                            </path>
+                                          </svg>
+                                        </button>
+                                      </div>
+                                      <button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart">
+                                          <circle cx="8" cy="21" r="1">
+                                          </circle>
+                                          <circle cx="19" cy="21" r="1">
+                                          </circle>
+                                          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12">
+                                          </path>
+                                        </svg>
+                                        Agregar
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div data-index="1" class="slick-slide slick-active slide-cell" tabindex="-1" aria-hidden="false">
+                            <div>
+                              <div class="px-3 slide-inner" tabindex="-1">
+                                <div class="bg-white p-5 transition-all hover:scale-105 platform-card">
+                                  <div class="relative mb-4">
+                                    <div class="absolute top-2 right-2 z-10 px-3 py-1 rounded-full flex items-center gap-1 text-white text-xs instant-badge">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap">
+                                        <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z">
+                                        </path>
+                                      </svg>
+                                      Activación Inmediata
+                                    </div>
+                                    <div class="relative w-full aspect-[3/4] flex items-center justify-center media-holder">
+                                      <div class="w-full h-full rounded-lg overflow-hidden platform-frame">
+                                        <img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0004.jpg" alt="StudySync - Lengua y Literatura Digital" class="w-full h-full object-cover">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="space-y-3">
+                                    <h3 class="line-clamp-2 product-title">
+                                      StudySync - Lengua y Literatura Digital
+                                    </h3>
+                                    <div class="flex items-baseline justify-end gap-2 price-row">
+                                      <span class="price-value">
+                                        S/ 79.990
+                                      </span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                      <div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control">
+                                        <button type="button" class="hover:opacity-70 transition-opacity qty-btn">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus">
+                                            <path d="M5 12h14">
+                                            </path>
+                                          </svg>
+                                        </button>
+                                        <span class="qty-value">
+                                          1
+                                        </span>
+                                        <button type="button" class="hover:opacity-70 transition-opacity qty-btn">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
+                                            <path d="M5 12h14">
+                                            </path>
+                                            <path d="M12 5v14">
+                                            </path>
+                                          </svg>
+                                        </button>
+                                      </div>
+                                      <button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart">
+                                          <circle cx="8" cy="21" r="1">
+                                          </circle>
+                                          <circle cx="19" cy="21" r="1">
+                                          </circle>
+                                          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12">
+                                          </path>
+                                        </svg>
+                                        Agregar
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div data-index="2" class="slick-slide slick-active slide-cell" tabindex="-1" aria-hidden="false">
+                            <div>
+                              <div class="px-3 slide-inner" tabindex="-1">
+                                <div class="bg-white p-5 transition-all hover:scale-105 platform-card">
+                                  <div class="relative mb-4">
+                                    <div class="absolute top-2 right-2 z-10 px-3 py-1 rounded-full flex items-center gap-1 text-white text-xs instant-badge">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap">
+                                        <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z">
+                                        </path>
+                                      </svg>
+                                      Activación Inmediata
+                                    </div>
+                                    <div class="relative w-full aspect-[3/4] flex items-center justify-center media-holder">
+                                      <div class="w-full h-full rounded-lg overflow-hidden platform-frame">
+                                        <img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0002.jpg" alt="Eureka Science - Ciencias Interactivas" class="w-full h-full object-cover">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="space-y-3">
+                                    <h3 class="line-clamp-2 product-title">
+                                      Eureka Science - Ciencias Interactivas
+                                    </h3>
+                                    <div class="flex items-baseline justify-end gap-2 price-row">
+                                      <span class="price-value">
+                                        S/ 69.990
+                                      </span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                      <div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control">
+                                        <button type="button" class="hover:opacity-70 transition-opacity qty-btn">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus">
+                                            <path d="M5 12h14">
+                                            </path>
+                                          </svg>
+                                        </button>
+                                        <span class="qty-value">
+                                          1
+                                        </span>
+                                        <button type="button" class="hover:opacity-70 transition-opacity qty-btn">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
+                                            <path d="M5 12h14">
+                                            </path>
+                                            <path d="M12 5v14">
+                                            </path>
+                                          </svg>
+                                        </button>
+                                      </div>
+                                      <button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart">
+                                          <circle cx="8" cy="21" r="1">
+                                          </circle>
+                                          <circle cx="19" cy="21" r="1">
+                                          </circle>
+                                          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12">
+                                          </path>
+                                        </svg>
+                                        Agregar
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div data-index="3" class="slick-slide slick-active slide-cell" tabindex="-1" aria-hidden="false">
+                            <div>
+                              <div class="px-3 slide-inner" tabindex="-1">
+                                <div class="bg-white p-5 transition-all hover:scale-105 platform-card">
+                                  <div class="relative mb-4">
+                                    <div class="absolute top-2 right-2 z-10 px-3 py-1 rounded-full flex items-center gap-1 text-white text-xs instant-badge">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap">
+                                        <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z">
+                                        </path>
+                                      </svg>
+                                      Activación Inmediata
+                                    </div>
+                                    <div class="relative w-full aspect-[3/4] flex items-center justify-center media-holder">
+                                      <div class="w-full h-full rounded-lg overflow-hidden platform-frame">
+                                        <img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0008.jpg" alt="CodeLab - Programación para Estudiantes" class="w-full h-full object-cover">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="space-y-3">
+                                    <h3 class="line-clamp-2 product-title">
+                                      CodeLab - Programación para Estudiantes
+                                    </h3>
+                                    <div class="flex items-baseline justify-end gap-2 price-row">
+                                      <span class="price-value">
+                                        S/ 94.990
+                                      </span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                      <div class="flex items-center gap-3 px-3 py-2 rounded-lg qty-control">
+                                        <button type="button" class="hover:opacity-70 transition-opacity qty-btn">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus">
+                                            <path d="M5 12h14">
+                                            </path>
+                                          </svg>
+                                        </button>
+                                        <span class="qty-value">
+                                          1
+                                        </span>
+                                        <button type="button" class="hover:opacity-70 transition-opacity qty-btn">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
+                                            <path d="M5 12h14">
+                                            </path>
+                                            <path d="M12 5v14">
+                                            </path>
+                                          </svg>
+                                        </button>
+                                      </div>
+                                      <button type="button" class="flex-1 py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all add-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart">
+                                          <circle cx="8" cy="21" r="1">
+                                          </circle>
+                                          <circle cx="19" cy="21" r="1">
+                                          </circle>
+                                          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12">
+                                          </path>
+                                        </svg>
+                                        Agregar
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="w-full py-12 section-contrast">
+                <div class="max-w-7xl mx-auto px-6">
+                  <h2 class="mb-8 section-title">
+                    Próximamente - Robótica e Inglés
+                  </h2>
+                  <div class="relative px-8">
+                    <div class="slick-slider slick-initialized">
+                      <div class="slick-list">
+                        <div class="slick-track slick-track-static">
+                          <div data-index="0" class="slick-slide slick-active slick-current slide-cell" tabindex="-1" aria-hidden="false">
+                            <div>
+                              <div class="px-3 slide-inner" tabindex="-1">
+                                <div class="bg-white p-5 transition-all hover:scale-105 platform-card platform-card--muted">
+                                  <div class="relative mb-4">
+                                    <div class="relative w-full aspect-[3/4] flex items-center justify-center media-holder">
+                                      <img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0003.jpg" alt="Kit de Robótica Educativa LEGO Mindstorms" class="w-full h-full object-contain image-no-filter">
+                                    </div>
+                                  </div>
+                                  <div class="space-y-3">
+                                    <h3 class="line-clamp-2 product-title">
+                                      Kit de Robótica Educativa LEGO Mindstorms
+                                    </h3>
+                                    <div class="flex items-baseline justify-end gap-2 price-row">
+                                      <span class="price-value">
+                                        S/ 349.990
+                                      </span>
+                                    </div>
+                                    <button type="button" class="w-full py-2.5 px-4 rounded-lg transition-all notify-btn">
+                                      Avisarme cuando esté disponible
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div data-index="1" class="slick-slide slick-active slide-cell" tabindex="-1" aria-hidden="false">
+                            <div>
+                              <div class="px-3 slide-inner" tabindex="-1">
+                                <div class="bg-white p-5 transition-all hover:scale-105 platform-card platform-card--muted">
+                                  <div class="relative mb-4">
+                                    <div class="relative w-full aspect-[3/4] flex items-center justify-center media-holder">
+                                      <img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0012.jpg" alt="Curso Completo de Inglés Cambridge (Nivel B2)" class="w-full h-full object-contain image-no-filter">
+                                    </div>
+                                  </div>
+                                  <div class="space-y-3">
+                                    <h3 class="line-clamp-2 product-title">
+                                      Curso Completo de Inglés Cambridge (Nivel B2)
+                                    </h3>
+                                    <div class="flex items-baseline justify-end gap-2 price-row">
+                                      <span class="price-value">
+                                        S/ 129.990
+                                      </span>
+                                    </div>
+                                    <button type="button" class="w-full py-2.5 px-4 rounded-lg transition-all notify-btn">
+                                      Avisarme cuando esté disponible
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div data-index="2" class="slick-slide slick-active slide-cell" tabindex="-1" aria-hidden="false">
+                            <div>
+                              <div class="px-3 slide-inner" tabindex="-1">
+                                <div class="bg-white p-5 transition-all hover:scale-105 platform-card platform-card--muted">
+                                  <div class="relative mb-4">
+                                    <div class="relative w-full aspect-[3/4] flex items-center justify-center media-holder">
+                                      <img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0009.jpg" alt="Kit de Química Experimental" class="w-full h-full object-contain image-no-filter">
+                                    </div>
+                                  </div>
+                                  <div class="space-y-3">
+                                    <h3 class="line-clamp-2 product-title">
+                                      Kit de Química Experimental
+                                    </h3>
+                                    <div class="flex items-baseline justify-end gap-2 price-row">
+                                      <span class="price-value">
+                                        S/ 89.990
+                                      </span>
+                                    </div>
+                                    <button type="button" class="w-full py-2.5 px-4 rounded-lg transition-all notify-btn">
+                                      Avisarme cuando esté disponible
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div data-index="3" class="slick-slide slick-active slide-cell" tabindex="-1" aria-hidden="false">
+                            <div>
+                              <div class="px-3 slide-inner" tabindex="-1">
+                                <div class="bg-white p-5 transition-all hover:scale-105 platform-card platform-card--muted">
+                                  <div class="relative mb-4">
+                                    <div class="relative w-full aspect-[3/4] flex items-center justify-center media-holder">
+                                      <img loading="lazy" decoding="async" width="600" height="800" src="./src/assets/images/libro-0007.jpg" alt="Paquete de Arte Profesional" class="w-full h-full object-contain image-no-filter">
+                                    </div>
+                                  </div>
+                                  <div class="space-y-3">
+                                    <h3 class="line-clamp-2 product-title">
+                                      Paquete de Arte Profesional
+                                    </h3>
+                                    <div class="flex items-baseline justify-end gap-2 price-row">
+                                      <span class="price-value">
+                                        S/ 69.990
+                                      </span>
+                                    </div>
+                                    <button type="button" class="w-full py-2.5 px-4 rounded-lg transition-all notify-btn">
+                                      Avisarme cuando esté disponible
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </main>
+              <footer class="w-full mt-12 footer-shell">
+                <div class="max-w-7xl mx-auto px-6 py-12">
+                  <div class="grid gap-10 footer-grid-main">
+                    <div class="space-y-5">
+                      <div class="inline-flex items-center px-4 py-2 rounded-2xl footer-badge">
+                        <span class="footer-logo">
+                          EUREKA
+                        </span>
+                      </div>
+                      <div class="space-y-3">
+                        <h3 class="footer-heading">
+                          VISITA NUESTRAS REDES SOCIALES
+                        </h3>
+                        <div class="flex flex-wrap gap-3">
+                          <a href="https://www.facebook.com/EditorialEurekaPeru" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-full transition-all hover:opacity-85 social-pill">
+                            Facebook
+                          </a>
+                          <a href="https://instagram.com/editorialeurekaperu" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-full transition-all hover:opacity-85 social-pill">
+                            Instagram
+                          </a>
+                          <a href="https://www.linkedin.com/company/editorialeurekaperu/" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-full transition-all hover:opacity-85 social-pill">
+                            LinkedIn
+                          </a>
+                          <a href="https://www.youtube.com/channel/UCK64hBajMPJAbGS-aDkvYDw" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-full transition-all hover:opacity-85 social-pill">
+                            YouTube
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="grid gap-8 footer-grid-links">
+                      <div class="space-y-4">
+                        <h3 class="footer-heading">
+                          SOBRE NOSOTROS
+                        </h3>
+                        <div class="flex flex-col gap-3">
+                          <span class="footer-link">
+                            Conócenos
+                          </span>
+                          <a href="./contactanos.html" class="footer-link">
+                            Contáctanos
+                          </a>
+                          <a href="./como-comprar.html" class="footer-link">
+                            ¿Cómo Comprar?
+                          </a>
+                        </div>
+                      </div>
+                      <div class="space-y-4">
+                        <h3 class="footer-heading">
+                          ATENCION AL CLIENTE
+                        </h3>
+                        <div class="flex flex-col gap-3">
+                          <span class="footer-link">
+                            Políticas de Privacidad
+                          </span>
+                          <span class="footer-link">
+                            Políticas de Envío
+                          </span>
+                          <span class="footer-link">
+                            Libro de Reclamaciones
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-10 pt-6 footer-divider">
+                    <p class="footer-copy">
+                      Desarrollado por @Jorge Diaz - 2026 | <span data-app-version>v1.0</span>
+                    </p>
+                  </div>
+                </div>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./src/assets/scripts/app.js"></script>
+  </body>
+</html>
+
+

@@ -1,0 +1,250 @@
+/* Component styles (modular and editable) */
+
+.brand-logo {
+  color: var(--primary);
+}
+
+.plan-card {
+  width: calc((100% - 48px) / 4);
+  border-radius: 16px;
+  box-shadow: var(--shadow-base);
+}
+
+.price-row {
+  text-align: right;
+}
+
+.price-value {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--accent);
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  min-height: 3rem;
+}
+
+.product-image-fixed {
+  height: 220px;
+}
+
+.qty-control {
+  background-color: var(--background-contrast);
+  border: 1px solid var(--border);
+}
+
+.qty-btn {
+  color: var(--text-primary);
+}
+
+.qty-value {
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  min-width: 20px;
+  text-align: center;
+}
+
+.add-btn {
+  background-color: var(--primary);
+  color: #fff;
+  font-weight: var(--font-weight-medium);
+  font-size: 0.9375rem;
+}
+
+.media-holder {
+  transform: none;
+  transition: transform 0.3s;
+}
+
+.slide-inner {
+  width: 100%;
+  display: inline-block;
+}
+
+.slide-cell {
+  outline: none;
+  width: 292px;
+}
+
+.slick-track-static {
+  width: 1168px;
+  opacity: 1;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.section-contrast {
+  background-color: var(--background-contrast);
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.context-bar {
+  background-color: var(--context-blue);
+}
+
+.carousel-arrow {
+  background-color: #fff;
+  box-shadow: var(--shadow-base);
+  color: var(--text-primary);
+}
+
+.plan-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: hidden;
+}
+
+.hero-media {
+  transform: translateY(30px);
+  filter: drop-shadow(rgba(0, 0, 0, 0.2) 0px 20px 40px);
+}
+
+.hero-media-image {
+  max-height: 500px;
+  border-radius: 20px;
+}
+
+.hero-cta {
+  background-color: var(--primary);
+  color: #fff;
+  font-weight: var(--font-weight-medium);
+  font-size: 1.0625rem;
+  box-shadow: rgba(46, 204, 113, 0.3) 0px 10px 30px;
+}
+
+.footer-shell {
+  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.footer-grid-main {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: start;
+}
+
+.footer-grid-links {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.footer-badge {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-logo {
+  font-size: 1.35rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+.footer-heading {
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+.footer-link {
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+}
+
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  text-align: center;
+}
+
+.social-pill {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.platform-frame {
+  border: 8px solid rgb(229, 231, 235);
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 40px;
+}
+
+.platform-card {
+  border-radius: 16px;
+  box-shadow: var(--shadow-base);
+  opacity: 1;
+  filter: none;
+  min-width: 280px;
+}
+
+.platform-card--muted {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.image-no-filter {
+  filter: none;
+}
+
+.instant-badge {
+  background-color: rgba(46, 204, 113, 0.9);
+  font-weight: var(--font-weight-medium);
+  backdrop-filter: blur(8px);
+}
+
+.text-15 {
+  font-size: 15px;
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.nav-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #111827;
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+}
+
+.notify-btn {
+  background-color: transparent;
+  border: 2px solid var(--border);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: 0.9375rem;
+}
+
+.school-selector {
+  min-width: min(100%, 360px);
+}
+
+.muted-icon {
+  color: var(--muted-foreground);
+}
+
+.cart-count-badge {
+  background-color: var(--primary);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--primary) 70%, white 30%);
+  outline-offset: 2px;
+}

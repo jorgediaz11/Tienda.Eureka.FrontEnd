@@ -1,0 +1,19 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Node (si se usa en el futuro)
+node_modules/
+
+# Build/coverage (si se agrega tooling)
+dist/
+build/
+coverage/
