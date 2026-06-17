@@ -1,0 +1,35 @@
+{
+  "name": "tienda-eureka-frontend",
+  "version": "1.0.0",
+  "description": "Proyecto estatico en HTML/CSS/JS para mostrar catalogo de libros, plataformas y materiales educativos.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Sin pruebas configuradas\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgediaz11/Tienda.Eureka.FrontEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgediaz11/Tienda.Eureka.FrontEnd/issues"
+  },
+  "homepage": "https://github.com/jorgediaz11/Tienda.Eureka.FrontEnd#readme",
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "vite": "^8.0.16"
+  }
+}

@@ -1,35 +1,49 @@
-# Tienda03 - Catalogo Educativo Eureka
+# Tienda.Eureka.FrontEnd - React + Vite
 
-Proyecto estatico en HTML/CSS/JS para mostrar catalogo de libros, plataformas y materiales educativos.
+Proyecto migrado a React + Vite para catalogo educativo y flujos dinamicos.
 
-## Estructura
+## Estructura principal
 
-- index.html: pagina principal
-- src/assets/styles/main.css: estilos base existentes
-- src/assets/styles/components.css: estilos modulares legibles
-- src/assets/scripts/app.js: punto de entrada JS
-- src/assets/scripts/modules/: modulos por responsabilidad
-- src/assets/images/: imagenes del catalogo
-- src/assets/images/originals/: respaldo de imagenes antes de compresion
+- index.html: entrada unica de Vite
+- src/main.jsx: arranque de React
+- src/react/App.jsx: enrutado principal
+- src/react/pages/: paginas en espanol
+- src/react/context/: estado global
+- src/react/services/: capa de servicios
+- src/react/api/: cliente HTTP, endpoints y contratos
 
-## Ejecutar en local
+## HTML legacy
 
-1. Abrir la carpeta del proyecto en VS Code.
-2. Abrir index.html en el navegador.
+Los archivos HTML de paginas antiguas fueron retirados. Solo se usa index.html como punto de entrada.
 
-Opcional (recomendado): usar la extension Live Server para recarga automatica.
+## Ejecucion
 
-## Buenas practicas aplicadas
+1. npm install
+2. npm run dev
+3. npm run build
 
-- Estructura semantica base (header, nav, main, footer)
-- Botones con type="button"
-- Foco visible para teclado
-- Nombres de imagenes consistentes (libro-0001.jpg ...)
-- Script separado en archivo externo y modularizado
-- Carga diferida de imagenes fuera del hero (loading="lazy")
-- Dimensiones width/height en todas las imagenes para reducir CLS
-- Optimizacion de imagenes JPG con respaldo de originales
+## Variables de entorno (.env)
 
-## Documentacion de arquitectura
+Este proyecto usa Vite, por lo tanto solo las variables con prefijo `VITE_` estan disponibles en el frontend.
 
-- Ver detalle en ARCHITECTURE.md
+1. Copia `.env.example` a `.env`.
+2. Ajusta los valores segun tu entorno.
+
+Variables incluidas:
+
+- `VITE_APP_VERSION`: version visible de la app.
+- `VITE_CONTACT_EMAIL`: correo destino del formulario de contacto.
+- `VITE_API_BASE_URL`: URL base del backend.
+- `VITE_USE_MOCK`: habilita/deshabilita respuestas mock.
+
+Importante:
+
+- No guardes credenciales reales de base de datos en el frontend.
+- Usuario, password, host y cadena de conexion de BD deben vivir en el backend (API/servidor), no en este proyecto React.
+
+### Plantilla backend
+
+Se agrego `.env.backend.example` para variables de API/servidor (DB, JWT, SMTP, throttling).
+
+- Este archivo es referencial para tu backend.
+- No reutilices secretos reales en archivos versionados.
