@@ -30,7 +30,7 @@ function FormularioLogin() {
         <input id="email" name="email" type="email" required value={form.email} onChange={onChange} className="w-full px-4 py-3 rounded-xl" style={{ border: "1px solid var(--border)" }} />
       </div>
       <div>
-        <label htmlFor="password" style={{ display: "block", marginBottom: "0.5rem" }}>Contrasena</label>
+        <label htmlFor="password" style={{ display: "block", marginBottom: "0.5rem" }}>Contraseña</label>
         <input id="password" name="password" type="password" required value={form.password} onChange={onChange} className="w-full px-4 py-3 rounded-xl" style={{ border: "1px solid var(--border)" }} />
       </div>
       <div>
@@ -38,7 +38,7 @@ function FormularioLogin() {
         <input id="fullName" name="fullName" type="text" value={form.fullName} onChange={onChange} className="w-full px-4 py-3 rounded-xl" style={{ border: "1px solid var(--border)" }} />
       </div>
       <div>
-        <label htmlFor="phone" style={{ display: "block", marginBottom: "0.5rem" }}>Telefono (opcional)</label>
+        <label htmlFor="phone" style={{ display: "block", marginBottom: "0.5rem" }}>Teléfono (opcional)</label>
         <input id="phone" name="phone" type="text" value={form.phone} onChange={onChange} className="w-full px-4 py-3 rounded-xl" style={{ border: "1px solid var(--border)" }} />
       </div>
       <button type="submit" className="add-btn px-6 py-3 rounded-xl">Ingresar</button>
@@ -73,7 +73,7 @@ function PanelPerfil() {
       await logout();
     } catch (error) {
       console.error(error);
-      setMessage("No se pudo cerrar sesion.");
+      setMessage("No se pudo cerrar sesión.");
     }
   };
 
@@ -82,7 +82,7 @@ function PanelPerfil() {
       <div className="section-contrast p-4 rounded-xl" style={{ border: "1px solid var(--border)" }}>
         <p><strong>Correo:</strong> {user.email}</p>
         <p><strong>Nombre:</strong> {user.fullName}</p>
-        <p><strong>Telefono:</strong> {user.phone || "No registrado"}</p>
+        <p><strong>Teléfono:</strong> {user.phone || "No registrado"}</p>
       </div>
 
       <form onSubmit={onSave} className="space-y-4">
@@ -91,13 +91,13 @@ function PanelPerfil() {
           <input id="profileName" name="fullName" type="text" value={form.fullName} onChange={onChange} className="w-full px-4 py-3 rounded-xl" style={{ border: "1px solid var(--border)" }} />
         </div>
         <div>
-          <label htmlFor="profilePhone" style={{ display: "block", marginBottom: "0.5rem" }}>Telefono</label>
+          <label htmlFor="profilePhone" style={{ display: "block", marginBottom: "0.5rem" }}>Teléfono</label>
           <input id="profilePhone" name="phone" type="text" value={form.phone} onChange={onChange} className="w-full px-4 py-3 rounded-xl" style={{ border: "1px solid var(--border)" }} />
         </div>
 
         <div className="flex flex-wrap gap-3">
           <button type="submit" className="add-btn px-6 py-3 rounded-xl">Guardar perfil</button>
-          <button type="button" onClick={onLogout} className="notify-btn px-6 py-3 rounded-xl">Cerrar sesion</button>
+          <button type="button" onClick={onLogout} className="notify-btn px-6 py-3 rounded-xl">Cerrar sesión</button>
         </div>
       </form>
 
@@ -107,8 +107,8 @@ function PanelPerfil() {
         <h2 style={{ fontSize: "1.1rem", fontWeight: "var(--font-weight-bold)", marginBottom: "0.75rem" }}>Acciones de perfil</h2>
         <ul style={{ listStyle: "disc", paddingLeft: "1.3rem" }}>
           <li>Ver historial de pedidos (mock).</li>
-          <li>Actualizar datos de facturacion (mock).</li>
-          <li>Gestionar preferencias de notificacion (mock).</li>
+          <li>Actualizar datos de facturación (mock).</li>
+          <li>Gestionar preferencias de notificación (mock).</li>
         </ul>
       </section>
     </div>

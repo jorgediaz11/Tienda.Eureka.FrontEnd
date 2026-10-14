@@ -11,12 +11,12 @@ const defaultSupportItems = [
   {
     id: "returns",
     title: "Cambios y devoluciones",
-    description: "Revisa politica y crea una solicitud de cambio.",
+    description: "Revisa política y crea una solicitud de cambio.",
     channel: "Postventa"
   },
   {
     id: "billing",
-    title: "Facturacion y comprobantes",
+    title: "Facturación y comprobantes",
     description: "Actualiza datos de factura y descarga comprobantes.",
     channel: "Finanzas"
   },
@@ -24,7 +24,7 @@ const defaultSupportItems = [
     id: "platform-support",
     title: "Soporte para acceso a plataformas",
     description: "Recupera claves y activa licencias educativas.",
-    channel: "Soporte tecnico"
+    channel: "Soporte técnico"
   }
 ];
 

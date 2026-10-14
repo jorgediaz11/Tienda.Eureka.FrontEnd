@@ -44,9 +44,9 @@ export default function ComoComprarPagina() {
 
   return (
     <section>
-      <h1 className="section-title mb-6">Como comprar</h1>
+      <h1 className="section-title mb-6">Cómo comprar</h1>
       <div className="section-contrast p-6 rounded-2xl" style={{ boxShadow: "var(--shadow-base)", color: "var(--text-primary)" }}>
-        <p>Esta vista es dinamica y se alimenta desde una tabla de reglas por tipo de necesidad.</p>
+        <p>Esta vista es dinámica y se alimenta desde una tabla de reglas por tipo de necesidad.</p>
         <p className="mt-2" style={{ fontSize: "0.95rem", color: "var(--muted-foreground)" }}>{statusMessage}</p>
 
         <div className="mt-4">

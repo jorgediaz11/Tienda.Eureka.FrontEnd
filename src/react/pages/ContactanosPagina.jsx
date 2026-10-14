@@ -50,11 +50,11 @@ export default function ContactanosPagina() {
 
   return (
     <section>
-      <h1 className="section-title mb-6">Contactanos</h1>
+      <h1 className="section-title mb-6">Contáctanos</h1>
       <div className="section-contrast p-6 rounded-2xl" style={{ boxShadow: "var(--shadow-base)", color: "var(--text-primary)" }}>
         <p className="mb-4">
           {user
-            ? "Detectamos tu sesion activa. Tus datos de contacto fueron precargados."
+            ? "Detectamos tu sesión activa. Tus datos de contacto fueron precargados."
             : "Completa el formulario para enviarnos tu consulta por correo."}
         </p>
 

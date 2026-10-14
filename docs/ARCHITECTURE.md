@@ -22,7 +22,7 @@
 - src/assets/scripts/modules/quantity.js: control de cantidad.
 
 4. Recursos
-- src/assets/images/: imagenes optimizadas del catalogo.
+- src/assets/images/: imagenes optimizadas del catálogo.
 - src/assets/images/originals/: respaldo de originales antes de compresion.
 
 ## Reglas de evolucion

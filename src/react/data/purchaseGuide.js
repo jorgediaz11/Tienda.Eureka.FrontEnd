@@ -7,8 +7,8 @@ export const purchaseGuideTable = [
   },
   {
     key: "refuerzo",
-    title: "Refuerzo academico",
-    description: "Textos de practica para matematica, comunicacion y ciencias.",
+    title: "Refuerzo académico",
+    description: "Textos de práctica para matemática, comunicación y ciencias.",
     productIds: ["libro-0004", "libro-0002", "libro-0005"]
   },
   {

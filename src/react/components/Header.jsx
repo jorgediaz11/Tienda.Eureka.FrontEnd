@@ -4,9 +4,9 @@ import { useAuth } from "../context/AuthContext";
 
 const navLinks = [
   { to: "/", label: "Inicio" },
-  { to: "/catalogo", label: "Catalogo" },
-  { to: "/como-comprar", label: "Como comprar" },
-  { to: "/contactanos", label: "Contactanos" },
+  { to: "/catalogo", label: "Catálogo" },
+  { to: "/como-comprar", label: "Cómo comprar" },
+  { to: "/contactanos", label: "Contáctanos" },
   { to: "/servicio-al-cliente", label: "Servicio al cliente" },
   { to: "/mi-cuenta", label: "Mi cuenta" }
 ];

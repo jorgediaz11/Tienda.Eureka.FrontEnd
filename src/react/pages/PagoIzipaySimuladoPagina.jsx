@@ -106,7 +106,7 @@ export default function PagoIzipaySimuladoPagina() {
       });
     } catch (error) {
       console.error(error);
-      setStatusMessage("No se pudo completar la simulacion de pago.");
+      setStatusMessage("No se pudo completar la simulación de pago.");
     } finally {
       setIsProcessing(false);
     }
@@ -124,7 +124,7 @@ export default function PagoIzipaySimuladoPagina() {
 
           <form onSubmit={onSubmit} className="space-y-4">
             <div>
-              <label htmlFor="cardNumber" style={{ display: "block", marginBottom: "0.5rem" }}>Numero de tarjeta</label>
+              <label htmlFor="cardNumber" style={{ display: "block", marginBottom: "0.5rem" }}>Número de tarjeta</label>
               <input id="cardNumber" name="cardNumber" type="text" inputMode="numeric" placeholder="4111 1111 1111 1111" value={form.cardNumber} onChange={onChange} className="w-full px-4 py-3 rounded-xl" style={{ border: "1px solid var(--border)" }} />
             </div>
 
@@ -135,7 +135,7 @@ export default function PagoIzipaySimuladoPagina() {
 
             <div className="grid gap-4" style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
               <div>
-                <label htmlFor="expiry" style={{ display: "block", marginBottom: "0.5rem" }}>Expiracion</label>
+                <label htmlFor="expiry" style={{ display: "block", marginBottom: "0.5rem" }}>Expiración</label>
                 <input id="expiry" name="expiry" type="text" inputMode="numeric" placeholder="MM/AA" value={form.expiry} onChange={onChange} className="w-full px-4 py-3 rounded-xl" style={{ border: "1px solid var(--border)" }} />
               </div>
               <div>
@@ -163,9 +163,9 @@ export default function PagoIzipaySimuladoPagina() {
           <p style={{ marginTop: "0.75rem", fontSize: "1.05rem" }}>Total: <strong>{formatCurrency(draftTotal)}</strong></p>
 
           <div className="checkout-success" style={{ marginTop: "1rem" }}>
-            <p style={{ margin: 0 }}><strong>Tip de simulacion</strong></p>
+            <p style={{ margin: 0 }}><strong>Tip de simulación</strong></p>
             <p style={{ margin: 0, fontSize: "0.92rem" }}>
-              Usa una tarjeta cualquiera de 16 digitos para aprobar. Si termina en 0000, se simula rechazo.
+              Usa una tarjeta cualquiera de 16 dígitos para aprobar. Si termina en 0000, se simula rechazo.
             </p>
           </div>
 

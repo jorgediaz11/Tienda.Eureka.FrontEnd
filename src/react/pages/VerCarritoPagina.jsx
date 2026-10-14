@@ -13,6 +13,17 @@ export default function VerCarritoPagina() {
   return (
     <section>
       <h1 className="section-title mb-6">Ver carrito</h1>
+
+      <h2 style={{ fontSize: "1.25rem", fontWeight: "var(--font-weight-bold)", marginBottom: "0.75rem" }}>
+        Datos del cliente
+      </h2>
+      <div className="checkout-confirm-grid">
+        <p><strong>Cliente:</strong> </p>
+        <p><strong>Correo:</strong> </p>
+        <p><strong>Telefono:</strong> </p>
+        <p><strong>Documento:</strong> </p>
+      </div>
+
       <div className="section-contrast p-6 rounded-2xl" style={{ boxShadow: "var(--shadow-base)", color: "var(--text-primary)" }}>
         {items.length === 0 ? (
           <p>Tu carrito esta vacio. Agrega productos desde el catalogo o inicio.</p>

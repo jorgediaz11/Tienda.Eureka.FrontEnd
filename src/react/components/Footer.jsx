@@ -28,16 +28,16 @@ export default function Footer() {
             <div className="space-y-4">
               <h3 className="footer-heading">SOBRE NOSOTROS</h3>
               <div className="flex flex-col gap-3">
-                <span className="footer-link">Conocenos</span>
-                <span className="footer-link">Contactanos</span>
-                <span className="footer-link">Como comprar</span>
+                <span className="footer-link">Conócenos</span>
+                <span className="footer-link">Contáctanos</span>
+                <span className="footer-link">Cómo comprar</span>
               </div>
             </div>
             <div className="space-y-4">
-              <h3 className="footer-heading">ATENCION AL CLIENTE</h3>
+              <h3 className="footer-heading">ATENCIÓN AL CLIENTE</h3>
               <div className="flex flex-col gap-3">
-                <span className="footer-link">Politicas de Privacidad</span>
-                <span className="footer-link">Politicas de Envio</span>
+                <span className="footer-link">Políticas de Privacidad</span>
+                <span className="footer-link">Políticas de Envío</span>
                 <span className="footer-link">Libro de Reclamaciones</span>
               </div>
             </div>

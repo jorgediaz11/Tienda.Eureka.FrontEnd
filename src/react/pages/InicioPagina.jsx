@@ -20,13 +20,13 @@ export default function InicioPagina() {
               <h1 className="leading-tight" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: "var(--font-weight-bold)" }}>
                 Todo lo que necesitas
                 <br />
-                para el ano escolar
+                para el año escolar
               </h1>
               <p className="opacity-90" style={{ fontSize: "1.125rem", lineHeight: 1.6 }}>
                 Libros, plataformas digitales y materiales educativos con entrega directa a tu colegio.
               </p>
               <Link to="/catalogo" className="px-8 py-4 rounded-xl inline-flex items-center gap-2 hero-cta">
-                Explorar catalogo
+                Explorar catálogo
               </Link>
             </div>
             <div className="relative">

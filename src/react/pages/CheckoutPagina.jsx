@@ -264,10 +264,14 @@ export default function CheckoutPagina() {
               <div className="checkout-confirm-grid">
                 <p><strong>Cliente:</strong> {customer.fullName}</p>
                 <p><strong>Correo:</strong> {customer.email}</p>
-                <p><strong>Telefono:</strong> {customer.phone}</p>
+                <p><strong>Teléfono:</strong> {customer.phone}</p>
                 <p><strong>Documento:</strong> {customer.documentNumber || "No registrado"}</p>
-                <p><strong>Direccion:</strong> {customer.address}</p>
+                <p><strong>Dirección:</strong> {customer.address}</p>
                 <p><strong>Referencia:</strong> {customer.reference || "Sin referencia"}</p>
+              </div>
+              <div className="checkout-confirm-grid">
+                <p><strong>Ingrese Cupón:</strong> </p>
+                <input id="coupon" name="coupon" type="text" value={customer.coupon} onChange={onChange} className="w-full px-4 py-3 rounded-xl" style={{ border: "1px solid var(--border)" }} />
               </div>
 
               <div className="flex flex-wrap gap-3">

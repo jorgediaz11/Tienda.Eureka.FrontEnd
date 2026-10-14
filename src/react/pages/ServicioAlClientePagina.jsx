@@ -65,8 +65,8 @@ export default function ServicioAlClientePagina() {
       <h1 className="section-title mb-6">Servicio al cliente</h1>
       <div className="section-contrast p-6 rounded-2xl" style={{ boxShadow: "var(--shadow-base)", color: "var(--text-primary)" }}>
         <p>
-          Esta vista es dinamica y permite registrar tickets de soporte.
-          {user ? " Detectamos sesion activa y tomaremos tus datos del perfil." : " Puedes continuar como invitado."}
+          Esta vista es dinámica y permite registrar tickets de soporte.
+          {user ? " Detectamos sesión activa y tomaremos tus datos del perfil." : " Puedes continuar como invitado."}
         </p>
         <p className="mt-2" style={{ fontSize: "0.95rem", color: "var(--muted-foreground)" }}>{statusMessage}</p>
 

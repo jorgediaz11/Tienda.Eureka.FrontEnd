@@ -87,7 +87,7 @@ Response:
 ```
 
 Notas:
-- productIds debe mapear con ids del catalogo disponible en frontend/backoffice.
+- productIds debe mapear con ids del catálogo disponible en frontend/backoffice.
 - Si el endpoint falla, el frontend usa tabla local fallback.
 
 ## 04. Servicio al cliente

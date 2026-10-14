@@ -1,7 +1,7 @@
 {
   "name": "tienda-eureka-frontend",
   "version": "1.0.0",
-  "description": "Proyecto estatico en HTML/CSS/JS para mostrar catalogo de libros, plataformas y materiales educativos.",
+  "description": "Proyecto estatico en HTML/CSS/JS para mostrar catálogo de libros, plataformas y materiales educativos.",
   "main": "index.js",
   "directories": {
     "doc": "docs"

@@ -1,6 +1,6 @@
 # Tienda.Eureka.FrontEnd - React + Vite
 
-Proyecto migrado a React + Vite para catalogo educativo y flujos dinamicos.
+Proyecto migrado a React + Vite para catálogo educativo y flujos dinamicos.
 
 ## Estructura principal
 
