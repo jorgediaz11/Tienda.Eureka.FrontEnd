@@ -1,4 +1,5 @@
 import { APP_VERSION } from "../config/appConfig";
+import logoFooter from "../../assets/images/Eureka-logo2.png";
 
 export default function Footer() {
   return (
@@ -8,7 +9,7 @@ export default function Footer() {
           <div className="space-y-5">
             <div className="inline-flex items-center px-4 py-2 rounded-2xl footer-badge">
               <img
-                src="/src/assets/images/Eureka-logo2.png"
+                src={logoFooter}
                 alt="Eureka"
                 style={{ width: "220px", maxWidth: "82vw", height: "auto", display: "block" }}
               />

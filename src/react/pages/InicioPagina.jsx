@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { featuredBooks } from "../data/products";
+import heroImage from "../../assets/images/libro-0014.jpg";
 
 export default function InicioPagina() {
   return (
@@ -36,7 +37,7 @@ export default function InicioPagina() {
                   decoding="async"
                   width="1200"
                   height="900"
-                  src="/src/assets/images/libro-0014.jpg"
+                  src={heroImage}
                   alt="Estudiante con materiales de estudio"
                   className="w-full h-auto object-contain hero-media-image"
                 />

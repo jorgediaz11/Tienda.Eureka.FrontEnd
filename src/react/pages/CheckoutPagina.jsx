@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import { createCheckout } from "../services/checkoutService";
+import { readCheckoutCustomer, saveCheckoutCustomer } from "../services/checkoutCustomerService";
+import { resolveCoupon } from "../services/checkoutCouponService";
 
 function formatCurrency(amount) {
   return `S/ ${Number(amount || 0).toFixed(2)}`;
@@ -34,6 +36,7 @@ export default function CheckoutPagina() {
 
   const checkoutDraftFromState = location.state?.checkoutDraft;
   const paymentResult = location.state?.paymentResult;
+  const persistedCustomer = useMemo(() => readCheckoutCustomer(), []);
 
   const [currentStep, setCurrentStep] = useState(1);
   const [customer, setCustomer] = useState(() => {
@@ -48,14 +51,26 @@ export default function CheckoutPagina() {
       };
     }
 
+    if (persistedCustomer) {
+      return persistedCustomer;
+    }
+
     return buildInitialCustomer(user);
   });
   const [statusMessage, setStatusMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderId, setOrderId] = useState("");
+  const [couponCode, setCouponCode] = useState(() => checkoutDraftFromState?.coupon?.code || "");
+  const [appliedCoupon, setAppliedCoupon] = useState(() => checkoutDraftFromState?.coupon || null);
 
   const effectiveItems = checkoutDraftFromState?.items || items;
-  const effectiveSubtotal = checkoutDraftFromState?.amount ?? subtotal;
+  const baseSubtotal = Number(checkoutDraftFromState?.baseAmount ?? subtotal);
+  const discountAmount = Number(
+    checkoutDraftFromState?.discountAmount ?? (appliedCoupon?.isValid ? appliedCoupon.discountAmount : 0)
+  );
+  const effectiveSubtotal = Number(
+    checkoutDraftFromState?.finalAmount ?? Math.max(0, Number((baseSubtotal - discountAmount).toFixed(2)))
+  );
 
   const totalItems = useMemo(
     () => effectiveItems.reduce((acc, item) => acc + item.quantity, 0),
@@ -63,6 +78,10 @@ export default function CheckoutPagina() {
   );
 
   const isCartEmpty = effectiveItems.length === 0;
+
+  useEffect(() => {
+    saveCheckoutCustomer(customer);
+  }, [customer]);
 
   useEffect(() => {
     if (!paymentResult || !paymentResult.approved || processedPaymentRef.current) {
@@ -75,6 +94,8 @@ export default function CheckoutPagina() {
 
     const payload = {
       amount: effectiveSubtotal,
+      baseAmount: baseSubtotal,
+      discountAmount,
       items: effectiveItems,
       customer: {
         name: customer.fullName,
@@ -85,6 +106,14 @@ export default function CheckoutPagina() {
         reference: customer.reference,
         source: isAuthenticated ? "authenticated" : "guest"
       },
+      coupon: appliedCoupon?.isValid
+        ? {
+          code: appliedCoupon.code,
+          type: appliedCoupon.type,
+          value: appliedCoupon.value,
+          discountAmount: appliedCoupon.discountAmount
+        }
+        : null,
       payment: {
         gateway: paymentResult.gateway,
         authorizationCode: paymentResult.authorizationCode,
@@ -107,9 +136,12 @@ export default function CheckoutPagina() {
         setIsSubmitting(false);
       });
   }, [
+    appliedCoupon,
+    baseSubtotal,
     clearCart,
     customer.address,
     customer.documentNumber,
+    discountAmount,
     customer.email,
     customer.fullName,
     customer.phone,
@@ -165,11 +197,28 @@ export default function CheckoutPagina() {
       return;
     }
 
+    const resolvedCoupon = resolveCoupon(couponCode, baseSubtotal);
+    if (resolvedCoupon && !resolvedCoupon.isValid) {
+      setStatusMessage(resolvedCoupon.message);
+      return;
+    }
+
+    const nextAppliedCoupon = resolvedCoupon?.isValid ? resolvedCoupon : null;
+    const nextDiscount = nextAppliedCoupon?.discountAmount || 0;
+    const nextFinalAmount = Math.max(0, Number((baseSubtotal - nextDiscount).toFixed(2)));
+
+    setAppliedCoupon(nextAppliedCoupon);
+    setStatusMessage(nextAppliedCoupon ? nextAppliedCoupon.message : "");
+
     navigate("/pago-izipay", {
       state: {
         checkoutDraft: {
-          amount: effectiveSubtotal,
+          amount: nextFinalAmount,
+          baseAmount: baseSubtotal,
+          discountAmount: nextDiscount,
+          finalAmount: nextFinalAmount,
           items: effectiveItems,
+          coupon: nextAppliedCoupon,
           customer: {
             name: customer.fullName,
             email: customer.email,
@@ -271,8 +320,22 @@ export default function CheckoutPagina() {
               </div>
               <div className="checkout-confirm-grid">
                 <p><strong>Ingrese Cupón:</strong> </p>
-                <input id="coupon" name="coupon" type="text" value={customer.coupon} onChange={onChange} className="w-full px-4 py-3 rounded-xl" style={{ border: "1px solid var(--border)" }} />
+                <input
+                  id="coupon"
+                  name="coupon"
+                  type="text"
+                  value={couponCode}
+                  onChange={(event) => setCouponCode(event.target.value)}
+                  placeholder="EUREKA10 o LECTOR5"
+                  className="w-full px-4 py-3 rounded-xl"
+                  style={{ border: "1px solid var(--border)" }}
+                />
               </div>
+              {appliedCoupon?.isValid ? (
+                <p style={{ color: "var(--primary)", fontWeight: "var(--font-weight-medium)" }}>
+                  {appliedCoupon.message}
+                </p>
+              ) : null}
 
               <div className="flex flex-wrap gap-3">
                 <button type="button" className="notify-btn px-6 py-3 rounded-xl" onClick={handlePreviousStep}>
@@ -319,6 +382,12 @@ export default function CheckoutPagina() {
                   </div>
                 ))}
               </div>
+              <p style={{ marginTop: "1rem" }}>
+                Subtotal: <strong>{formatCurrency(baseSubtotal)}</strong>
+              </p>
+              <p>
+                Descuento: <strong>-{formatCurrency(discountAmount)}</strong>
+              </p>
               <p style={{ marginTop: "1rem", fontSize: "1.1rem" }}>
                 Total a pagar: <strong>{formatCurrency(effectiveSubtotal)}</strong>
               </p>

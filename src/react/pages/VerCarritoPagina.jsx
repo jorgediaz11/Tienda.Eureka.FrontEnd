@@ -1,5 +1,8 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
+import { readCheckoutCustomer } from "../services/checkoutCustomerService";
 
 function formatCurrency(amount) {
   return `S/ ${amount.toFixed(2)}`;
@@ -7,8 +10,14 @@ function formatCurrency(amount) {
 
 export default function VerCarritoPagina() {
   const { items, itemCount, subtotal, removeItem } = useCart();
+  const { user } = useAuth();
 
   const isCartEmpty = items.length === 0;
+  const checkoutCustomer = useMemo(() => readCheckoutCustomer(), []);
+  const customerName = checkoutCustomer?.fullName || user?.fullName || "";
+  const customerEmail = checkoutCustomer?.email || user?.email || "";
+  const customerPhone = checkoutCustomer?.phone || user?.phone || "";
+  const customerDocument = checkoutCustomer?.documentNumber || "";
 
   return (
     <section>
@@ -18,10 +27,10 @@ export default function VerCarritoPagina() {
         Datos del cliente
       </h2>
       <div className="checkout-confirm-grid">
-        <p><strong>Cliente:</strong> </p>
-        <p><strong>Correo:</strong> </p>
-        <p><strong>Telefono:</strong> </p>
-        <p><strong>Documento:</strong> </p>
+        <p><strong>Cliente:</strong> {customerName || "No registrado"}</p>
+        <p><strong>Correo:</strong> {customerEmail || "No registrado"}</p>
+        <p><strong>Telefono:</strong> {customerPhone || "No registrado"}</p>
+        <p><strong>Documento:</strong> {customerDocument || "No registrado"}</p>
       </div>
 
       <div className="section-contrast p-6 rounded-2xl" style={{ boxShadow: "var(--shadow-base)", color: "var(--text-primary)" }}>

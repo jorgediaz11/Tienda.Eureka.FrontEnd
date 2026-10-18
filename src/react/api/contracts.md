@@ -134,7 +134,15 @@ Headers: Authorization opcional
 Request:
 ```json
 {
-  "amount": 120.5,
+  "amount": 108.45,
+  "baseAmount": 120.5,
+  "discountAmount": 12.05,
+  "coupon": {
+    "code": "EUREKA10",
+    "type": "percentage",
+    "value": 10,
+    "discountAmount": 12.05
+  },
   "items": [
     {
       "id": "libro-0011",
@@ -154,7 +162,12 @@ Response:
 {
   "orderId": "ORD-12345",
   "paymentStatus": "approved",
-  "amount": 120.5,
+  "amount": 108.45,
   "items": []
 }
 ```
+
+Notas:
+- `coupon` es opcional y se envia solo si fue validado en frontend.
+- `baseAmount` representa subtotal previo al descuento.
+- `discountAmount` representa monto descontado aplicado al pedido.

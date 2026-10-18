@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
+import logoHorizontal from "../../assets/images/Eureka-logoH.png";
 
 const navLinks = [
   { to: "/", label: "Inicio" },
@@ -19,7 +20,7 @@ export default function Header() {
     <header className="w-full px-6 py-4" style={{ backgroundColor: "rgba(255, 255, 255, 0.92)", boxShadow: "var(--shadow-base)" }}>
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-6 flex-wrap">
         <Link to="/" className="inline-flex items-center">
-          <img src="/src/assets/images/Eureka-logoH.png" alt="Eureka" style={{ width: "150px", height: "auto", display: "block" }} />
+          <img src={logoHorizontal} alt="Eureka" style={{ width: "150px", height: "auto", display: "block" }} />
         </Link>
 
         <nav className="flex flex-wrap items-center gap-3">

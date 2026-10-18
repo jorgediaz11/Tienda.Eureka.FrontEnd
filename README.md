@@ -11,6 +11,11 @@ Proyecto migrado a React + Vite para catálogo educativo y flujos dinamicos.
 - src/react/context/: estado global
 - src/react/services/: capa de servicios
 - src/react/api/: cliente HTTP, endpoints y contratos
+- src/assets/images/: imagenes usadas por React mediante imports (compatibles con build de produccion)
+- public/favicon-cart.svg: favicon estatico servido desde la raiz
+
+Nota de flujo:
+- Los datos del cliente capturados en checkout se guardan en localStorage para mantener consistencia entre carrito y checkout.
 
 ## HTML legacy
 
@@ -21,6 +26,7 @@ Los archivos HTML de paginas antiguas fueron retirados. Solo se usa index.html c
 1. npm install
 2. npm run dev
 3. npm run build
+4. npm test
 
 ## Variables de entorno (.env)
 
@@ -35,6 +41,12 @@ Variables incluidas:
 - `VITE_CONTACT_EMAIL`: correo destino del formulario de contacto.
 - `VITE_API_BASE_URL`: URL base del backend.
 - `VITE_USE_MOCK`: habilita/deshabilita respuestas mock.
+
+Comportamiento recomendado de mocks:
+
+- En desarrollo, si `VITE_USE_MOCK` no esta definido, se habilita mock por defecto.
+- En entornos no desarrollo, si `VITE_USE_MOCK` no esta definido, se deshabilita mock por defecto.
+- Para forzar comportamiento, define explicitamente `VITE_USE_MOCK=true` o `VITE_USE_MOCK=false`.
 
 Importante:
 
